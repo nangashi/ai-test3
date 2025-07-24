@@ -1,31 +1,38 @@
 # Dev Container用のベースイメージを使用
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
+ARG USER=vscode
+ARG USER_HOME=/home/${USER}
+
 # 基本パッケージのアップデートとインストール
 RUN apt-get update && apt-get install -y \
   tmux \
   npm \
   && rm -rf /var/lib/apt/lists/*
 
-# Claude Codeのインストール
-RUN npm install -g @anthropic-ai/claude-code
-# gemini cliのインストール
-RUN npm install -g @google/gemini-cli
+USER ${USER}
 
-USER vscode
+WORKDIR ${USER_HOME}
+
+# npmインストール設定
+ENV PATH="${USER_HOME}/node_modules/.bin:$PATH"
+# Claude Codeのインストール
+RUN npm install @anthropic-ai/claude-code
+# gemini cliのインストール
+RUN npm install @google/gemini-cli
 
 # Aquaのインストール
+ENV PATH="${USER_HOME}/.local/share/aquaproj-aqua/bin:$PATH"
 COPY aqua.yaml /tmp/
 RUN curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.2/aqua-installer | bash \
-&& cd /tmp \
-&& /home/vscode/.local/share/aquaproj-aqua/bin/aqua i -a \
-&& echo 'export PATH="/home/vscode/.local/share/aquaproj-aqua/bin:$PATH"' >> ~/.bashrc
+  && cd /tmp \
+  && ${USER_HOME}/.local/share/aquaproj-aqua/bin/aqua i -a
 
-# 権限エラー対策のためにディレクトリを事前作成
+# 権限エラー対策のためにキャッシュディレクトリを事前作成
 RUN mkdir -p \
-  /home/vscode/.vscode-server \
-  /home/vscode/.cursor-server \
-  /home/vscode/.claude
+  ${USER_HOME}/.vscode-server \
+  ${USER_HOME}/.cursor-server \
+  ${USER_HOME}/.claude
 
 # 作業ディレクトリを設定
 WORKDIR /workspace

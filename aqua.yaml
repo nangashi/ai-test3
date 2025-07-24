@@ -19,3 +19,4 @@ packages:
 - name: aquasecurity/trivy@v0.63.0
 - name: fujiwara/lambroll@v1.1.0
 - name: gruntwork-io/terragrunt@v0.82.4
+- name: astral-sh/uv@0.8.2
