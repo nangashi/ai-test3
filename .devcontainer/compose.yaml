@@ -1,0 +1,10 @@
+services:
+  devcontainer:
+    container_name: ai-test3-devcontainer
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ${PWD}:/workspace:cached
+    # コンテナを起動し続けるためのコマンド
+    command: sleep infinity
