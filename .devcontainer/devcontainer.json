@@ -35,7 +35,6 @@
         "hashicorp.terraform",
         "hashicorp.hcl",
         // Markdown関連
-        "yzhang.markdown-all-in-one",
         "davidanson.vscode-markdownlint",
         "bierner.markdown-mermaid",
         // その他ユーティリティ
