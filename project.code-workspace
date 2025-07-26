@@ -1,0 +1,27 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "root"
+    },
+    {
+      "path": "apps/agent",
+      "name": "agent"
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/__init__.py": true,
+      "**/__pycache__": true,
+      "**/.venv": true,
+      "**/.ruff_cache": true,
+      "**/.pytest_cache": true,
+      "**/.coverage": true,
+      "**/.terraform": true,
+      "**/.terragrunt-stack": true,
+      "**/.terragrunt-cache": true,
+      // workspace用設定
+      "apps/": true,
+    },
+  },
+}

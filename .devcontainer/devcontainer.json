@@ -29,6 +29,10 @@
         // Git関連
         "eamodio.gitlens",
         "mhutchie.git-graph",
+        // Python関連
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
         // Docker/コンテナ関連
         "ms-azuretools.vscode-docker",
         // Terraform関連
