@@ -26,7 +26,7 @@ ENV PATH="${USER_HOME}/.local/share/aquaproj-aqua/bin:$PATH"
 COPY aqua.yaml /tmp/
 RUN curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.2/aqua-installer | bash \
   && cd /tmp \
-  && ${USER_HOME}/.local/share/aquaproj-aqua/bin/aqua i -a
+  && aqua i -a
 
 # 権限エラー対策のためにキャッシュディレクトリを事前作成
 RUN mkdir -p \
