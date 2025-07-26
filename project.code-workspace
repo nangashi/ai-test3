@@ -8,6 +8,10 @@
       "path": "apps/agent",
       "name": "agent"
     },
+    {
+      "path": "terraform",
+      "name": "terraform"
+    },
   ],
   "settings": {
     "files.exclude": {
@@ -22,6 +26,7 @@
       "**/.terragrunt-cache": true,
       // workspace用設定
       "apps/": true,
+      "terraform/": true,
     },
   },
 }
