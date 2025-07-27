@@ -1,16 +1,16 @@
 {
   "folders": [
     {
-      "path": ".",
-      "name": "root"
-    },
-    {
       "path": "apps/agent",
       "name": "agent"
     },
     {
       "path": "terraform",
       "name": "terraform"
+    },
+    {
+      "path": ".",
+      "name": "root"
     },
   ],
   "settings": {

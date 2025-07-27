@@ -1,4 +1,9 @@
 pre-commit:
-  jobs:
-    - name: check secrets
+  parallel: true
+  commands:
+    gitleaks:
       run: gitleaks git --staged --verbose --exit-code=1 --redact --no-banner --no-color
+    terraform:
+      run: terraform fmt {staged_files}
+      glob: "**/*.tf"
+      stage_fixed: true
