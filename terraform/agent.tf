@@ -9,7 +9,7 @@ resource "aws_iam_role" "bedrock_agent_role" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          Service = "bedrock.amazonaws.com"
+          Service = "bedrock-agentcore.amazonaws.com"
         }
       }
     ]
@@ -31,32 +31,16 @@ resource "aws_iam_policy" "bedrock_agent_policy" {
       {
         Effect = "Allow"
         Action = [
-          "bedrock:*",
-          "lambda:InvokeFunction",
-          "lambda:GetFunction",
-          "lambda:GetFunctionConfiguration"
+          "ecr:GetAuthorizationToken",
         ]
         Resource = "*"
       },
       {
         Effect = "Allow"
         Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
+          "bedrock:InvokeModel*",
         ]
-        Resource = "arn:aws:logs:*:*:*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "s3:GetObject",
-          "s3:ListBucket"
-        ]
-        Resource = [
-          "arn:aws:s3:::bedrock-agent-*",
-          "arn:aws:s3:::bedrock-agent-*/*"
-        ]
+        Resource = "*"
       },
       {
         Effect = "Allow"
@@ -66,7 +50,16 @@ resource "aws_iam_policy" "bedrock_agent_policy" {
           "ecr:BatchCheckLayerAvailability"
         ]
         Resource = aws_ecr_repository.bedrock_agent_repo.arn
-      }
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "*"
+      },
     ]
   })
 }

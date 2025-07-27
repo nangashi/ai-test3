@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-northeast-1" # 東京リージョン
+  region = "us-east-1"
 
   default_tags {
     tags = {
