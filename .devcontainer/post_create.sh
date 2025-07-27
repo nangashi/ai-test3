@@ -2,5 +2,3 @@
 
 # lefthookのインストール
 lefthook install
-
-eval "$(just --completions bash)"

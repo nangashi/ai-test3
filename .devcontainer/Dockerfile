@@ -28,6 +28,10 @@ RUN curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.2/
   && cd /tmp \
   && aqua i -a
 
+# aquaで導入するツール関連の設定
+RUN cd /tmp \
+  && just --completions zsh >> ${USER_HOME}/.zshrc
+
 # 権限エラー対策のためにキャッシュディレクトリを事前作成
 RUN mkdir -p \
   ${USER_HOME}/.vscode-server \
