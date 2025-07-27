@@ -1,4 +1,4 @@
 pre-commit:
   jobs:
     - name: check secrets
-      run: gitleaks detect --staged --no-git -v
+      run: gitleaks git --staged --verbose --exit-code=1 --redact --no-banner --no-color
