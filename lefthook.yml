@@ -5,5 +5,5 @@ pre-commit:
       run: gitleaks git --staged --verbose --exit-code=1 --redact --no-banner --no-color
     terraform:
       run: terraform fmt {staged_files}
-      glob: "**/*.tf"
+      glob: "*.tf"
       stage_fixed: true
