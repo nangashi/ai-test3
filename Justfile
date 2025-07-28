@@ -9,10 +9,14 @@ check: check-secrets
 check-secrets:
   gitleaks detect
 
+# terraform フォーマット修正
+fix-tf *args:
+  terraform fmt -no-color {{args}}
+
 # terraform apply
-tf-apply:
+deploy-tf:
   cd terraform/ && terraform apply -auto-approve
 
 # agentcore launch
-ac-launch:
+deploy-agent:
   cd apps/agent/ && uv run agentcore launch --codebuild
