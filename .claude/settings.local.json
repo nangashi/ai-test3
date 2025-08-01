@@ -3,7 +3,10 @@
     "allow": [
       "Bash(mkdir:*)",
       "Bash(uv sync:*)",
-      "Bash(uv run:*)"
+      "Bash(uv run:*)",
+      "mcp__serena__find_file",
+      "mcp__serena__list_dir",
+      "mcp__serena__search_for_pattern"
     ],
     "deny": []
   }

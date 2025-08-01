@@ -22,16 +22,18 @@ RUN npm install @anthropic-ai/claude-code
 # gemini cliのインストール
 RUN npm install @google/gemini-cli
 
-# Aquaのインストール
-ENV PATH="${USER_HOME}/.local/share/aquaproj-aqua/bin:$PATH"
-COPY aqua.yaml /tmp/
-RUN curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.2/aqua-installer | bash \
+# miseのインストール
+ENV PATH="${USER_HOME}/.local/bin:$PATH"
+ENV MISE_TRUSTED_CONFIG_PATHS=/
+COPY mise.toml /tmp/
+RUN curl https://mise.jdx.dev/install.sh | sh \
+  && echo 'eval "$(mise activate zsh)"' >> ${USER_HOME}/.zshrc \
   && cd /tmp \
-  && aqua i -a
+  && ${USER_HOME}/.local/bin/mise install
 
-# aquaで導入するツール関連の設定
+# miseで導入するツール関連の設定
 RUN cd /tmp \
-  && just --completions zsh >> ${USER_HOME}/.zshrc
+  && ${USER_HOME}/.local/bin/mise exec -- just --completions zsh >> ${USER_HOME}/.zshrc
 
 # 権限エラー対策のためにキャッシュディレクトリを事前作成
 RUN mkdir -p \

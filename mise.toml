@@ -1,0 +1,21 @@
+[tools]
+# Python関連
+"uv" = "0.8.2"
+"ruff" = "0.11.13"
+
+# AWS関連
+"awscli" = "2.22.34"
+
+# Terraform関連
+"terraform" = "1.12.2"
+"tflint" = "0.58.0"
+"terragrunt" = "0.82.4"
+
+# セキュリティ関連
+"trivy" = "0.63.0"
+"gitleaks" = "8.28.0"
+
+# その他ツール
+"lambroll" = "1.1.0"
+"lefthook" = "1.12.2"
+"just" = "1.42.4"
