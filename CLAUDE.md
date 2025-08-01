@@ -17,10 +17,12 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 - **Latest Information**: Gather latest tech info, best practices, package versions before working
 - **Approach Agreement**: Agree on approach before work
 
-### Tool Usage
+### ### Tool Usage
 
-- **Gemini Consultation & Review**: Ensure quality by consulting and requesting reviews from Gemini for design/implementation decisions
-- **Context7 for Spec Research**: Use context7 and various MCP servers for specification research
+- **Consultation & Review**: Request design and implementation reviews from Gemini for critical decisions, complex architectural choices, and code quality validation
+- **Spec Research**: Use context7 MCP Server for technical documentation lookup
+- **Web Search**: Use Tavily MCP Server for real-time web searches, current information retrieval, and external documentation that may not be in the local knowledge base
+- **Semantic Search**: Use Serena MCP Server for intelligent codebase navigation, finding related code patterns, understanding code dependencies, and locating implementation examples within the project
 
 #### Gemini Usage Guide
 
