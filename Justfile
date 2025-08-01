@@ -3,7 +3,9 @@ default:
   @just --list
 
 # チェックツール実行
-check: check-secrets
+check:
+  #!/usr/bin/env -S parallel --shebang --ungroup --jobs {{ num_cpus() }}
+  just check-secrets
 
 # 機密情報をチェック
 check-secrets:

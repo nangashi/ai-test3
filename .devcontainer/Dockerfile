@@ -8,6 +8,7 @@ ARG USER_HOME=/home/${USER}
 RUN apt-get update && apt-get install -y \
   tmux \
   npm \
+  parallel \
   && rm -rf /var/lib/apt/lists/*
 
 USER ${USER}
