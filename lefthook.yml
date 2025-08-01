@@ -6,6 +6,6 @@ pre-commit:
     gitleaks:
       run: gitleaks git --staged --verbose --exit-code=1 --redact --no-banner --no-color
     terraform:
-      run: just fix-tf {staged_files}
+      run: terraform fmt -no-color {staged_files}
       glob: "*.tf"
       stage_fixed: true

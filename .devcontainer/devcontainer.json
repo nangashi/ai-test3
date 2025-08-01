@@ -5,7 +5,7 @@
   "workspaceFolder": "/workspace",
   // リモート環境での設定
   "remoteUser": "vscode",
-  "postCreateCommand": "lefthook install",
+  "postCreateCommand": "/home/vscode/.devcontainer/post_create.sh",
   // VS Code拡張機能キャッシュ用のマウント設定
   "mounts": [
     // ローカル環境との設定共有
@@ -45,6 +45,7 @@
         // その他ユーティリティ
         "ms-vscode.vscode-json",
         "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
         "editorconfig.editorconfig",
         "oderwat.indent-rainbow"
       ],
