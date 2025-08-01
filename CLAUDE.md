@@ -73,7 +73,34 @@ EOF
 - **Side Effect Separation Principle**: Clearly separate parts with side effects from those without, using immutable objects wherever possible. Expand pure function areas to improve testability
 - **Incremental Design Improvement Principle**: Assume that design cannot reach ideal structure in one iteration; plan for continuous improvement through refactoring. Prioritize high-priority issues within finite resources
 
-### Python
+### Implementation Techniques
+
+#### File Management & Structural Design
+
+- **File Separation**: Maintain single functionality per file and split when exceeding 500-800 lines. Keep files at an appropriate size that AI can understand and manage effectively
+- **Module Design**: Separate files by functional units and layers, making dependencies explicit
+- **Configuration Externalization**: Separate large configuration data and configs into external files to keep main logic lean
+
+#### Documentation & Comments
+
+- **File Headers**: Document responsibilities, purposes, and major dependencies at the beginning of each file
+- **Method Documentation**: Clearly specify function overview, usage, parameters, return values, and exceptions for each method
+- **Inline Comments**: Add appropriate amount of comments that aid understanding. Focus on explaining the "why" rather than the "what"
+- **TODO/FIXME Usage**: Clearly mark future improvements and known issues
+
+#### Architecture Patterns
+
+- **Clean Architecture**: Extract classes with external access and direct dependencies inward. Separate infrastructure, application, and domain layers
+- **Domain-Driven Design**: Aggregate business logic in domain models and separate from technical concerns. Define bounded contexts clearly and use ubiquitous language
+- **Layer Separation**: Clearly separate presentation layer, business logic layer, and data access layer
+
+#### Testing & Quality Assurance
+
+- **Test-Driven Development**: Practice Red-Green-Refactor cycle based on t-wada's approach. Write tests first, then implement, making expectations clear
+- **Test Pyramid**: Structure tests with ratio of Unit Tests > Integration Tests > E2E Tests
+- **Testable Design**: Increase pure functions and separate side effects to create easily testable structures
+
+### Python Development
 
 #### Implementation Policy
 
