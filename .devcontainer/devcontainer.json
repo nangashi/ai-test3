@@ -17,6 +17,7 @@
     "source=vscode-extensions,target=/home/vscode/.vscode-server,type=volume",
     "source=cursor-extensions,target=/home/vscode/.cursor-server,type=volume",
     // Claude Code設定の永続化
+    "source=${localEnv:HOME}/.claude.json,target=/home/vscode/.claude.json,type=bind,consistency=cached",
     "source=claude-config,target=/home/vscode/.claude,type=volume"
   ],
   "features": {

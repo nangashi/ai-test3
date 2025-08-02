@@ -8,3 +8,6 @@ __pycache__/
 *.tfstate.*
 .terraform/
 .terraform.lock.hcl
+
+# Claude Code
+.claude/settings.local.json
