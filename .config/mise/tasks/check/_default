@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#MISE description="check all"
+#MISE depends=["check:secrets", "check:markdown", "check:json", "check:yaml", "check:editorconfig", "check:terraform"]

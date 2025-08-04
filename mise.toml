@@ -7,8 +7,8 @@ awscli = "2.22.34"
 # Terraform関連
 terraform = "1.12.2"
 tflint = "0.58.0"
-# セキュリティ関連
 trivy = "0.63.0"
+# セキュリティ関連
 gitleaks = "8.28.0"
 # その他ツール
 "aqua:fujiwara/lambroll" = "1.1.0"
@@ -16,6 +16,9 @@ lefthook = "1.12.2"
 prettier = "3.6.2"
 fd = "latest"
 markdownlint-cli2 = "latest"
+usage = "latest"
+node = "22"
+editorconfig-checker = "latest"
 
 # デプロイツール
 [tasks."tf:plan"]
@@ -29,16 +32,3 @@ run = "cd terraform/ && terraform apply -auto-approve"
 [tasks."agentcore:launch"]
 description = "agentcore launch"
 run = "cd apps/agent/ && uv run agentcore launch --codebuild"
-
-# チェックツール
-[tasks.check]
-description = "チェックツール実行"
-depends = ["check:secrets"]
-
-[tasks."check:secrets"]
-description = "機密情報をチェック"
-run = "gitleaks detect"
-
-[tasks."check:markdown"]
-description = "markdown"
-run = 'prettier --check "**/*.md"'

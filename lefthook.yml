@@ -9,3 +9,7 @@ pre-commit:
       run: terraform fmt -no-color {staged_files}
       glob: "*.tf"
       stage_fixed: true
+    prettier:
+      run: prettier --write {staged_files}
+      glob: "**/*.{json,md,yaml,yml}"
+      stage_fixed: true

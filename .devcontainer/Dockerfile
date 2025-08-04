@@ -15,6 +15,10 @@ USER ${USER}
 
 WORKDIR ${USER_HOME}
 
+# zsh設定
+RUN echo 'export LANG=en_US.UTF-8' >> ~/.zshrc \
+  && echo 'export LC_CTYPE=en_US.UTF-8' >> ~/.zshrc
+
 # 権限エラー対策のためにキャッシュディレクトリを事前作成
 RUN mkdir -p \
   ${USER_HOME}/.vscode-server \
@@ -32,6 +36,12 @@ RUN npm install @anthropic-ai/claude-code@1.0.59
 # gemini cliのインストール
 RUN npm install @google/gemini-cli
 
+# textlintルール
+RUN npm install \
+  textlint-rule-preset-ja-technical-writing \
+  textlint-rule-preset-jtf-style \
+  textlint-rule-no-mix-dearu-desumasu
+
 # miseのインストール
 ENV PATH="${USER_HOME}/.local/bin:$PATH"
 ENV MISE_TRUSTED_CONFIG_PATHS=/
@@ -39,6 +49,7 @@ COPY mise.toml /tmp/
 RUN --mount=type=cache,target=${USER_HOME}/.cache/mise,uid=1000,gid=1000 \
   curl https://mise.jdx.dev/install.sh | sh \
   && echo 'eval "$(mise activate zsh)"' >> ${USER_HOME}/.zshrc \
+  && echo 'eval "$(mise completion zsh)"' >> ${USER_HOME}/.zshrc \
   && cd /tmp \
   && ${USER_HOME}/.local/bin/mise install
 
